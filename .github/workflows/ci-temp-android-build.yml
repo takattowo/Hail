@@ -17,11 +17,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - name: Run unit tests and debug build
-        run: ./gradlew :app:testDebugUnitTest :app:assembleDebug
-      - name: Upload debug APK
+      - name: Run unit tests and release build
+        run: ./gradlew :app:testDebugUnitTest :app:assembleRelease
+      - name: Upload release APK
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: Hail-debug
-          path: app/build/outputs/apk/debug/*.apk
+          name: Hail-release
+          path: app/build/outputs/apk/release/*.apk
+          archive: false
           if-no-files-found: error
